@@ -28,6 +28,12 @@ class Nil[T] extends List[T]{
   override def tail: Nothing = throw new NoSuchMethodException("Nil has no tail!")
 }
 
+object List{
+  def apply[T](x1: T, x2: T): List[T] = new Cons[T](x1, new Cons[T](x2, new Nil))
+
+  def apply[T](): List = new Nil
+}
+
 object Test{
   def main(args: Array[String]) {
     val list = new Cons(1, new Cons(2,new Cons(3, new Nil)))
